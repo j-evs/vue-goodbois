@@ -22,9 +22,9 @@ const router = new Router({
   ]
 })
 
-// router is the single source of truth for current breed
-router.afterEach(({name, params: {breed: toBreed}}, {params: {breed: fromBreed}}) => {
-  return name === 'AllImages' && (fromBreed !== toBreed)
+router.afterEach(({name, params: {breed: toBreed}}) => {
+  const currentBreed = store.state.currentBreed
+  return name === 'AllImages' && (currentBreed !== toBreed)
     ? store.dispatch('selectBreed', {breed: toBreed})
     : null
 })

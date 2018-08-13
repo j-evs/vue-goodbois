@@ -1,11 +1,13 @@
 <template>
-  <images-wrapper>
-    <div v-for="(image, i) in images" :key="i">
-      <dog-image :src="image" :is-fav="isFavourite(image)"></dog-image>
-    </div>
-    <loader v-if="isLoading"></loader>
+  <div>
+    <images-wrapper>
+      <div v-for="(image, i) in images" :key="i">
+        <dog-image :src="image" :is-fav="isFavourite(image)"></dog-image>
+      </div>
+      <loader v-if="isLoading"></loader>
+    </images-wrapper>
     <div id="trigger" class="trigger"></div>
-  </images-wrapper>
+  </div>
 </template>
 
 <script>
