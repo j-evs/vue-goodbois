@@ -10,6 +10,8 @@
 import DogImage from './DogImage'
 import ImagesWrapper from './ImagesWrapper'
 
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Favourites',
   components: {
@@ -17,9 +19,7 @@ export default {
     DogImage
   },
   computed: {
-    favourites () {
-      return this.$store.state.favourites
-    }
+    ...mapGetters(['favourites'])
   }
 }
 </script>

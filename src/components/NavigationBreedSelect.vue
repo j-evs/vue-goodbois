@@ -7,21 +7,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'NavigationBreedSelect',
 
   computed: {
-    breeds () {
-      return this.$store.state.breeds
-    },
-    breed () {
-      return this.$store.state.currentBreed
-    }
+    ...mapGetters(['breeds', 'breed'])
   },
   methods: {
     onBreedSelect: function (e) {
       const breed = e.target.value
-      return this.$router.push({name: 'Images', params: { breed }})
+      return this.$router.push({name: 'AllImages', params: { breed }})
     }
   }
 }

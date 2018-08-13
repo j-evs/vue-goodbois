@@ -9,6 +9,9 @@
 
 <script>
 import IconHeart from './IconHeart'
+
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'DogImage',
   components: {
@@ -25,20 +28,11 @@ export default {
     }
   },
   methods: {
-    addToFavourites (image) {
-      return this.$store.commit('addToFavourites', {
-        image
-      })
-    },
-    removeFromFavourites (image) {
-      return this.$store.commit('removeFromFavourites', {
-        image
-      })
-    },
+    ...mapMutations(['addToFavourites', 'removeFromFavourites']),
     toggleFavourite (image) {
       return this.isFav
-        ? this.removeFromFavourites(image)
-        : this.addToFavourites(image)
+        ? this.removeFromFavourites({image})
+        : this.addToFavourites({image})
     }
   }
 }
@@ -69,7 +63,6 @@ export default {
   }
 
   .iconWrapper {
-    /*display: none;*/
     width: 40px;
     height: 40px;
     display: flex;

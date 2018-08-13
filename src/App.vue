@@ -14,15 +14,21 @@
 <script>
 import Navigation from './components/Navigation'
 import ImagesWrapper from './components/ImagesWrapper'
+
+import { mapActions } from 'vuex'
+
 export default {
   name: 'App',
   components: {
     Navigation,
     ImagesWrapper
   },
+  methods: {
+    ...mapActions(['getBreeds', 'addBreedImages'])
+  },
   mounted () {
-    this.$store.dispatch('getBreeds')
-    this.$store.dispatch('addBreedImages')
+    this.getBreeds()
+    this.addBreedImages()
   }
 }
 </script>

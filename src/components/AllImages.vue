@@ -11,6 +11,8 @@
 import DogImage from '../components/DogImage'
 import ImagesWrapper from '../components/ImagesWrapper'
 
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'AllImages',
   components: {
@@ -28,12 +30,7 @@ export default {
     this.observer = null
   },
   computed: {
-    favourites () {
-      return this.$store.state.favourites
-    },
-    images () {
-      return this.$store.state.images
-    }
+    ...mapGetters(['favourites', 'images'])
   },
   methods: {
     isFavourite (image) {
@@ -42,10 +39,11 @@ export default {
     observerCb: function (entries) {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
-          this.$store.dispatch('addBreedImages')
+          this.addBreedImages()
         }
       })
-    }
+    },
+    ...mapActions(['addBreedImages'])
   },
   data () {
     return {

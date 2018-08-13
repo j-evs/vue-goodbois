@@ -15,6 +15,7 @@ export const fetchBreedList = () =>
     .then(data => data && data.data && data.data.message)
 
 export const fetchRandomBreedImages = ({breed, count}) => {
+  console.log('breed', breed)
   const endpoint = breed
     ? createBreedRandomImagesEndpoint({breed, count})
     : createRandomBreedRandomImagesEndpoint({count})
