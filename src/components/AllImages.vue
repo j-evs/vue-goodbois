@@ -3,13 +3,15 @@
     <div v-for="(image, i) in images" :key="i">
       <dog-image :src="image" :is-fav="isFavourite(image)"></dog-image>
     </div>
-    <div id="triggering">TRIGGER BRO</div>
+    <loader v-if="isLoading"></loader>
+    <div id="trigger" class="trigger"></div>
   </images-wrapper>
 </template>
 
 <script>
 import DogImage from '../components/DogImage'
 import ImagesWrapper from '../components/ImagesWrapper'
+import Loader from './Loader'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -17,10 +19,11 @@ export default {
   name: 'AllImages',
   components: {
     DogImage,
-    ImagesWrapper
+    ImagesWrapper,
+    Loader
   },
   mounted () {
-    const trigger = document.getElementById('triggering')
+    const trigger = document.getElementById('trigger')
 
     this.observer = new IntersectionObserver(this.observerCb)
     this.observer.observe(trigger)
@@ -30,7 +33,7 @@ export default {
     this.observer = null
   },
   computed: {
-    ...mapGetters(['favourites', 'images'])
+    ...mapGetters(['favourites', 'images', 'isLoading'])
   },
   methods: {
     isFavourite (image) {
@@ -54,5 +57,7 @@ export default {
 </script>
 
 <style scoped>
-
+.trigger {
+  visibility: hidden;
+}
 </style>

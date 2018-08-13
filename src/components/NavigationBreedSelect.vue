@@ -1,5 +1,6 @@
 <template>
   <select @change="onBreedSelect" :value="breed">
+    <option :value="undefined"> All breeds </option>
     <option v-for="(breed, i) in breeds" :key="i" >
         {{breed}}
     </option>

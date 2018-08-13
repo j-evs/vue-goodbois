@@ -10,5 +10,11 @@ export default {
   },
   breed (state) {
     return state.currentBreed
+  },
+  isLoading (state) {
+    return state.isLoading
+  },
+  isError (state) {
+    return state.isError
   }
 }

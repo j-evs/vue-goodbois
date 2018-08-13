@@ -3,10 +3,9 @@
     <header class="header">
       <navigation></navigation>
     </header>
-    <main class="main">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+    <main class="main" >
+      <router-view v-if="!isError"></router-view>
+      <div v-else>Something went wrong. Please try again later.</div>
     </main>
   </div>
 </template>
@@ -15,13 +14,16 @@
 import Navigation from './components/Navigation'
 import ImagesWrapper from './components/ImagesWrapper'
 
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     Navigation,
     ImagesWrapper
+  },
+  computed: {
+    ...mapGetters(['isError'])
   },
   methods: {
     ...mapActions(['getBreeds', 'addBreedImages'])
