@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Images from '@/components/Images'
+import Favourites from '@/components/Favourites'
 
 import store from '../store'
 
@@ -9,13 +10,13 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     {
-      path: '/:breed',
-      name: 'Images',
-      component: Images
-    },
-    {
       path: '/favourites',
       name: 'Favourites',
+      component: Favourites
+    },
+    {
+      path: '/:breed',
+      name: 'Images',
       component: Images
     }
   ]

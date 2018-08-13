@@ -2,7 +2,8 @@
   <div>
     <div class="imagesWrapper">
       <div class="hello" v-for="(image, i) in images" :key="i">
-        {{image}}
+        <span @click="addToFavourites(image)">WHAAAAAAAT</span>
+        <img :src="image">
       </div>
     </div>
     <div id="triggering">TRIGGER BRO</div>
@@ -10,6 +11,8 @@
 </template>
 
 <script>
+  import {addToFavourites} from '../api/favourites'
+
 export default {
   name: 'Images',
   mounted () {
@@ -23,6 +26,7 @@ export default {
     this.observer = null
   },
   methods: {
+    addToFavourites,
     observerCb: function (entries) {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
@@ -47,8 +51,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .hello {
-  width: 50px;
-  height: 50px;
   border: 1px solid black;
 }
 .imagesWrapper {
