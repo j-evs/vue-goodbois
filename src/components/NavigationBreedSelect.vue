@@ -9,9 +9,7 @@
 <script>
 export default {
   name: 'NavigationBreedSelect',
-  created () {
-    this.$store.dispatch('getBreeds')
-  },
+
   computed: {
     breeds () {
       return this.$store.state.breeds

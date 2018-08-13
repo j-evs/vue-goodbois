@@ -1,17 +1,19 @@
 <template>
-  <div>
-    <div class="hello" v-for="(favourite, i) in favourites" :key="i">
-      <dog-image :src="favourite" is-fav></dog-image>
+  <images-wrapper>
+    <div v-for="(favourite, i) in favourites" :key="i">
+      <dog-image class="dogImage" :src="favourite" is-fav></dog-image>
     </div>
-  </div>
+  </images-wrapper>
 </template>
 
 <script>
 import DogImage from './DogImage'
+import ImagesWrapper from './ImagesWrapper'
 
 export default {
   name: 'Favourites',
   components: {
+    ImagesWrapper,
     DogImage
   },
   computed: {

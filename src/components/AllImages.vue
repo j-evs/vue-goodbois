@@ -1,21 +1,21 @@
-<template >
-  <div>
-    <div class="imagesWrapper">
-      <div class="hello" v-for="(image, i) in images" :key="i">
-        <dog-image :src="image" :is-fav="isFavourite(image)"></dog-image>
-      </div>
+<template>
+  <images-wrapper>
+    <div v-for="(image, i) in images" :key="i">
+      <dog-image :src="image" :is-fav="isFavourite(image)"></dog-image>
     </div>
     <div id="triggering">TRIGGER BRO</div>
-  </div>
+  </images-wrapper>
 </template>
 
 <script>
-import DogImage from './DogImage'
+import DogImage from '../components/DogImage'
+import ImagesWrapper from '../components/ImagesWrapper'
 
 export default {
-  name: 'Images',
+  name: 'AllImages',
   components: {
-    DogImage
+    DogImage,
+    ImagesWrapper
   },
   mounted () {
     const trigger = document.getElementById('triggering')
@@ -55,12 +55,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello {
-  border: 1px solid black;
-}
-.imagesWrapper {
-  min-height: 100vh;
-}
+
 </style>
