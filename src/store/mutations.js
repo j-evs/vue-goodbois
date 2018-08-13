@@ -16,5 +16,11 @@ export default {
   },
   addImages (state, {images}) {
     state.images.push(...images)
+  },
+  addToFavourites (state, {image}) {
+    state.favourites.push(image)
+  },
+  removeFromFavourites (state, {image}) {
+    state.favourites = state.favourites.filter(fav => fav !== image)
   }
 }

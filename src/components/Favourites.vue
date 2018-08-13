@@ -1,20 +1,23 @@
 <template>
   <div>
-    {{favourites}}
+    <div class="hello" v-for="(favourite, i) in favourites" :key="i">
+      <dog-image :src="favourite" is-fav></dog-image>
+    </div>
   </div>
 </template>
 
 <script>
-import {getFavourites} from '../api/favourites'
+import DogImage from './DogImage'
+
 export default {
   name: 'Favourites',
-  data: function () {
-    return {
-      favourites: []
-    }
+  components: {
+    DogImage
   },
-  mounted () {
-    this.favourites = getFavourites()
+  computed: {
+    favourites () {
+      return this.$store.state.favourites
+    }
   }
 }
 </script>

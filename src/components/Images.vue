@@ -2,8 +2,7 @@
   <div>
     <div class="imagesWrapper">
       <div class="hello" v-for="(image, i) in images" :key="i">
-        <span @click="addToFavourites(image)">WHAAAAAAAT</span>
-        <img :src="image">
+        <dog-image :src="image" :is-fav="isFavourite(image)"></dog-image>
       </div>
     </div>
     <div id="triggering">TRIGGER BRO</div>
@@ -11,10 +10,13 @@
 </template>
 
 <script>
-  import {addToFavourites} from '../api/favourites'
+import DogImage from './DogImage'
 
 export default {
   name: 'Images',
+  components: {
+    DogImage
+  },
   mounted () {
     const trigger = document.getElementById('triggering')
 
@@ -25,8 +27,18 @@ export default {
     this.observer.disconnect()
     this.observer = null
   },
+  computed: {
+    favourites () {
+      return this.$store.state.favourites
+    },
+    images () {
+      return this.$store.state.images
+    }
+  },
   methods: {
-    addToFavourites,
+    isFavourite (image) {
+      return this.favourites.includes(image)
+    },
     observerCb: function (entries) {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
@@ -38,11 +50,6 @@ export default {
   data () {
     return {
       observer: null
-    }
-  },
-  computed: {
-    images () {
-      return this.$store.state.images
     }
   }
 }

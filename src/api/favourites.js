@@ -1,21 +1,14 @@
-const FAVOURITES_KEY = 'favourites'
+export const FAVOURITES_KEY = 'favourites'
 
-const getByKey = (key) => JSON.parse(localStorage.getItem(key))
-const saveToLocalStorage = (key, data) =>
-  localStorage.setItem(key, JSON.stringify(data))
-
-export const addToFavourites = (imageSrc) => {
-  const favourites = getByKey(FAVOURITES_KEY) || []
-  const newFavourites = [...new Set([...favourites, imageSrc])]
-
-  return saveToLocalStorage(FAVOURITES_KEY, newFavourites)
-}
-
-export const removeFromFavourites = (imageSrc) => {
-  const favourites = getByKey(FAVOURITES_KEY)
-  const newFavourites = favourites.filter(fav => fav !== imageSrc)
-
-  return saveToLocalStorage(FAVOURITES_KEY, newFavourites)
+const getByKey = (key) => {
+  const data = localStorage.getItem(key)
+  let result
+  try {
+    result = JSON.parse(data)
+  } catch (e) {
+    result = null
+  }
+  return result
 }
 
 export const getFavourites = () => getByKey(FAVOURITES_KEY)
