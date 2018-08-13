@@ -35,7 +35,18 @@ const selectBreed = (store, { breed }) =>
     onFail: () => store.commit('setCurrentBreed', {breed: ''})
   })
 
+const addBreedImages = (store) =>
+  fetchDataHelper({
+    store,
+    apiFn: fetchRandomBreedImages.bind(this, {breed: store.state.currentBreed, count: 20}),
+    onSuccess: (data) => {
+      store.commit('addImages', {images: data})
+    },
+    onFail: () => store.commit('setImages', [])
+  })
+
 export default {
   getBreeds,
-  selectBreed
+  selectBreed,
+  addBreedImages
 }

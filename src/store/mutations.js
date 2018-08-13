@@ -13,5 +13,8 @@ export default {
   },
   setImages (state, {images}) {
     state.images = images
+  },
+  addImages (state, {images}) {
+    state.images.push(...images)
   }
 }

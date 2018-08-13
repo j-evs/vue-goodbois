@@ -1,5 +1,5 @@
 <template>
-  <select @change="onBreedSelect" v-model="breed">
+  <select @change="onBreedSelect" :value="breed">
     <option v-for="(breed, i) in breeds" :key="i" >
         {{breed}}
     </option>
@@ -23,7 +23,7 @@ export default {
   methods: {
     onBreedSelect: function (e) {
       const breed = e.target.value
-      return this.$router.push({name: 'Breed', params: { breed }})
+      return this.$router.push({name: 'Images', params: { breed }})
     }
   }
 }

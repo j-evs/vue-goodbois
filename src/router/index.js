@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Images from '@/components/Images'
 
 import store from '../store'
 
@@ -9,26 +9,21 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
       path: '/:breed',
-      name: 'Breed',
-      component: HelloWorld
+      name: 'Images',
+      component: Images
     },
     {
       path: '/favourites',
       name: 'Favourites',
-      component: HelloWorld
+      component: Images
     }
   ]
 })
 
 // router is the single source of truth for current breed
 router.afterEach(({name, params: {breed}}) => {
-  return name === 'Breed'
+  return name === 'Images'
     ? store.dispatch('selectBreed', {breed})
     : null
 })
