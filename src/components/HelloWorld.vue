@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     {{ $route.params.breed }}
+    {{images}}
   </div>
 </template>
 
@@ -10,6 +11,11 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {
+    images () {
+      return this.$store.state.images
     }
   }
 }

@@ -2,7 +2,7 @@
   <nav>
     <router-link to="/">Homepage</router-link>
     <router-link to="/favourites">Favourites</router-link>
-    <navigation-breed-select :breeds="breeds"></navigation-breed-select>
+    <navigation-breed-select></navigation-breed-select>
   </nav>
 </template>
 
@@ -13,10 +13,7 @@ export default {
   name: 'Menu',
   components: {
     NavigationBreedSelect
-  },
-  data: () => ({
-    breeds: ['memedog', 'corgy']
-  })
+  }
 }
 </script>
 

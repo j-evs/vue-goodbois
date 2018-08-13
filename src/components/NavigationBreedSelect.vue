@@ -1,6 +1,6 @@
 <template>
-  <select @change="filterByBreed">
-    <option v-for="(breed, i) in breeds" :key="i">
+  <select @change="onBreedSelect" v-model="breed">
+    <option v-for="(breed, i) in breeds" :key="i" >
         {{breed}}
     </option>
   </select>
@@ -9,14 +9,19 @@
 <script>
 export default {
   name: 'NavigationBreedSelect',
-  props: {
-    breeds: {
-      type: Array,
-      default: () => []
+  created () {
+    this.$store.dispatch('getBreeds')
+  },
+  computed: {
+    breeds () {
+      return this.$store.state.breeds
+    },
+    breed () {
+      return this.$store.state.currentBreed
     }
   },
   methods: {
-    filterByBreed: function (e) {
+    onBreedSelect: function (e) {
       const breed = e.target.value
       return this.$router.push({name: 'Breed', params: { breed }})
     }
