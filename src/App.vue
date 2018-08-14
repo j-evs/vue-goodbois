@@ -30,7 +30,6 @@ export default {
   },
   mounted () {
     this.getBreeds()
-    this.addBreedImages()
   }
 }
 </script>
