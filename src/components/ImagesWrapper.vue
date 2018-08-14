@@ -2,8 +2,7 @@
   <div>
     <div class="background"></div>
     <div class="imagesWrapper">
-      <slot>
-      </slot>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -16,6 +15,12 @@ export default {
 </script>
 
 <style scoped>
+.background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: no-repeat 50% 30% url('../assets/doge3.png');
+}
 
 .imagesWrapper {
   min-height: 100vh;
@@ -24,12 +29,5 @@ export default {
   grid-auto-rows: 250px 150px;
   grid-gap: 30px;
   background-size: 100px;
-}
-
-.background {
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  background: no-repeat 50% 30% url('../assets/doge3.png');
 }
 </style>
