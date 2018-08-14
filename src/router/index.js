@@ -25,7 +25,7 @@ const router = new Router({
 router.afterEach(({name, params: {breed: toBreed}}) => {
   const currentBreed = store.state.currentBreed
   return name === 'AllImages' && (currentBreed !== toBreed)
-    ? store.dispatch('selectBreed', {breed: toBreed})
+    ? store.commit('setCurrentBreed', {breed: toBreed})
     : null
 })
 

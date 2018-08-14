@@ -1,4 +1,4 @@
-import {fetchBreedList, fetchRandomBreedImages} from '../api/breed'
+import {fetchRandomBreedImages} from '../api/breed'
 
 const fetchDataHelper = ({store: {commit}, apiFn, onSuccess, onFail}) => {
   commit('setLoadingState', {isLoading: true})
@@ -16,25 +16,6 @@ const fetchDataHelper = ({store: {commit}, apiFn, onSuccess, onFail}) => {
     })
 }
 
-const getBreeds = (store) =>
-  fetchDataHelper({
-    store,
-    apiFn: fetchBreedList,
-    onSuccess: (data) => store.commit('setBreeds', {breeds: data}),
-    onFail: () => store.commit('setBreeds', {breeds: []})
-  })
-
-const selectBreed = (store, { breed }) =>
-  fetchDataHelper({
-    store,
-    apiFn: fetchRandomBreedImages.bind(this, {breed, count: 20}),
-    onSuccess: (data) => {
-      store.commit('setImages', {images: data})
-      store.commit('setCurrentBreed', {breed})
-    },
-    onFail: () => store.commit('setCurrentBreed', {breed: ''})
-  })
-
 const addBreedImages = (store) =>
   fetchDataHelper({
     store,
@@ -46,7 +27,5 @@ const addBreedImages = (store) =>
   })
 
 export default {
-  getBreeds,
-  selectBreed,
   addBreedImages
 }

@@ -35,7 +35,7 @@ export default {
     this.observer = null
   },
   computed: {
-    ...mapGetters(['favourites', 'images', 'isLoading'])
+    ...mapGetters(['favourites', 'images', 'isLoading', 'breed'])
   },
   methods: {
     isFavourite (image) {
@@ -43,7 +43,7 @@ export default {
     },
     observerCb: function (entries) {
       entries.forEach(entry => {
-        if (entry.intersectionRatio > 0) {
+        if (entry.intersectionRatio > 0 && !this.breed) {
           this.addBreedImages()
         }
       })

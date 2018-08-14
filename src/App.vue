@@ -26,10 +26,10 @@ export default {
     ...mapGetters(['isError'])
   },
   methods: {
-    ...mapActions(['getBreeds', 'addBreedImages'])
+    ...mapActions(['addBreedImages'])
   },
   mounted () {
-    this.getBreeds()
+    this.addBreedImages()
   }
 }
 </script>
