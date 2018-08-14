@@ -3,7 +3,7 @@
     <div @click="toggleFavourite(src)" :class="['iconWrapper', {favourite: isFav}]">
       <IconHeart></IconHeart>
     </div>
-    <img class="image" :src="src">
+    <img class="dogImage" :src="src">
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     opacity: 1;
   }
 
-  .wrapper:hover .image{
+  .wrapper:hover .dogImage{
       box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
       0px 6px 10px 0px rgba(0, 0, 0, 0.14),
       0px 1px 18px 0px rgba(0, 0, 0, 0.12);
@@ -60,9 +60,6 @@ export default {
     bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  .iconWrapper {
     width: 40px;
     height: 40px;
     display: flex;
@@ -87,7 +84,7 @@ export default {
     fill: #C03A2B;
   }
 
-  .image {
+  .dogImage {
     transition: box-shadow .2s;
     height: 100%;
     width: 100%;

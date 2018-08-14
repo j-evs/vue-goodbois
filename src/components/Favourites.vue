@@ -1,7 +1,7 @@
 <template>
   <images-wrapper>
     <div v-for="(favourite, i) in favourites" :key="i">
-      <dog-image class="dogImage" :src="favourite" is-fav></dog-image>
+      <dog-image :src="favourite" is-fav></dog-image>
     </div>
   </images-wrapper>
 </template>
